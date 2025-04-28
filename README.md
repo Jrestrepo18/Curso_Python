@@ -7,5 +7,5 @@ Este repositorio contiene 20 ejercicios básicos de programación en Python, des
 ## Requisitos
 Python 3.10 o superior
 
-##Autor
+## Autor
 Jeronimo Cardona Restrepo.
