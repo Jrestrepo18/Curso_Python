@@ -171,7 +171,4 @@ while back_menu:
         print("--------------------------------------------\n")
         break
 
-    print("hola")
-
-    print("hola")
         
