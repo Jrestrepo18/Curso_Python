@@ -1,7 +1,7 @@
 ## 🧨Proyectos_Semanales:
 Entregables del moodoble
-## 📚 Repasos:
-Ejercicos de repaso en clase.
+## 📚 Ejercios y repasos:
+Ejercicos y repasos de repaso en clase.
 ## 🎨Restos clases: 
 proyecyos que se proponen en clase.
 
