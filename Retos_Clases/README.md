@@ -1,1 +1,1 @@
-
+Proyectos propuestos en clase.
