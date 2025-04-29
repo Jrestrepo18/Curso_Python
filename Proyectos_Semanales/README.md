@@ -1,2 +1,2 @@
 ## Proyectos semanales.
-estan separados por capetas
+Entreables del moodoble
