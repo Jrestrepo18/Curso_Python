@@ -1,5 +1,5 @@
-## Ejercicios:
+## ⚔️Ejercicios:
 Ejercicios diarios propuestos en el sitio.
 
-## Repasos:
+## 🪜 Repasos:
 Repasos en clases
