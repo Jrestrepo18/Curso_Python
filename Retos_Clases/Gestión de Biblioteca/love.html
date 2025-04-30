@@ -2,15 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>💌 Carta Animada</title>
+  <title>Carta animada</title>
   <style>
     body {
-      background: #fff0f5;
       margin: 0;
       height: 100vh;
+      background: #fff0f5;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
       overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
     }
@@ -19,18 +19,51 @@
       position: relative;
       width: 300px;
       height: 200px;
-      cursor: pointer;
+      transform: translateY(100%);
+      animation: subir 1.5s forwards ease-out;
+      perspective: 1000px;
+    }
+
+    @keyframes subir {
+      to {
+        transform: translateY(0);
+      }
     }
 
     .sobre {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1.5s ease-in-out;
+    }
+
+    .sobre.volteado {
+      transform: rotateY(180deg);
+    }
+
+    .frente, .detras {
       position: absolute;
       width: 100%;
       height: 100%;
-      background: #ff69b4;
+      backface-visibility: hidden;
       border-radius: 10px;
+    }
+
+    .frente {
+      background: #ff69b4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
       box-shadow: 0 0 20px #ffb6c1;
+      z-index: 2;
+    }
+
+    .detras {
+      background: #ffe4e1;
+      transform: rotateY(180deg);
       z-index: 1;
-      overflow: hidden;
     }
 
     .tapa {
@@ -43,10 +76,16 @@
       transform-origin: top center;
       transform: rotateX(0deg);
       transition: transform 1s ease-in-out;
-      z-index: 2;
+      z-index: 3;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
     }
 
-    .contenido {
+    .tapa.abierta {
+      transform: rotateX(-130deg);
+    }
+
+    .mensaje {
       position: absolute;
       top: 100%;
       left: 0;
@@ -61,6 +100,10 @@
       text-align: center;
       transition: top 1s ease-in-out;
       z-index: 0;
+    }
+
+    .mensaje.desplegado {
+      top: 0%;
     }
 
     .corazon {
@@ -107,40 +150,47 @@
 </head>
 <body>
 
-<div class="contenedor" onclick="abrirSobre()">
-  <div class="sobre">
-    <div class="tapa" id="tapa"></div>
-    <div class="contenido" id="contenido">
-      <h3>💖 Para ti 💖</h3>
-      <p>
-        Esta carta es para recordarte<br>
-        lo especial que eres.<br><br>
-        Nunca dejes de brillar ✨<br>
-        Con cariño,<br>Tu amigo invisible 💌
-      </p>
+<div class="contenedor" onclick="animarCarta()">
+  <div class="sobre" id="sobre">
+    <div class="frente">📩</div>
+    <div class="detras">
+      <div class="tapa" id="tapa"></div>
+      <div class="mensaje" id="mensaje">
+        <h3>💖 Para ti 💖</h3>
+        <p>
+          Esta carta es para recordarte<br>
+          lo especial que eres.<br><br>
+          Nunca dejes de brillar ✨<br>
+          Con cariño,<br>Tu amigo invisible 💌
+        </p>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-  function abrirSobre() {
+  function animarCarta() {
+    const sobre = document.getElementById('sobre');
     const tapa = document.getElementById('tapa');
-    const contenido = document.getElementById('contenido');
+    const mensaje = document.getElementById('mensaje');
 
-    // Animar tapa hacia atrás
-    tapa.style.transform = 'rotateX(-120deg)';
+    // Paso 1: girar el sobre
+    sobre.classList.add('volteado');
 
-    // Subir contenido como carta saliendo
+    // Paso 2: abrir tapa después del giro
     setTimeout(() => {
-      contenido.style.top = '0%';
-    }, 800);
+      tapa.classList.add('abierta');
+    }, 1500);
 
-    // Corazones flotantes
-    lanzarCorazones();
+    // Paso 3: mostrar mensaje después de abrir tapa
+    setTimeout(() => {
+      mensaje.classList.add('desplegado');
+      lanzarCorazones();
+    }, 2500);
   }
 
   function lanzarCorazones() {
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 25; i++) {
       const corazon = document.createElement('div');
       corazon.className = 'corazon';
       corazon.style.left = Math.random() * window.innerWidth + 'px';
