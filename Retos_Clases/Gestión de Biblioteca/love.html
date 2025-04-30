@@ -2,77 +2,65 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>💌 Carta para ti</title>
+  <title>💌 Carta Animada</title>
   <style>
     body {
+      background: #fff0f5;
       margin: 0;
-      padding: 0;
-      background: #ffe4e1;
-      font-family: 'Georgia', serif;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .contenedor {
-      perspective: 1000px;
-    }
-
-    .sobre {
+      position: relative;
       width: 300px;
       height: 200px;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 2s;
       cursor: pointer;
     }
 
-    .sobre.girar {
-      transform: rotateY(180deg);
-    }
-
-    .cara, .tapa {
+    .sobre {
       position: absolute;
       width: 100%;
       height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-    }
-
-    .cara {
       background: #ff69b4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 60px;
+      border-radius: 10px;
       box-shadow: 0 0 20px #ffb6c1;
-    }
-
-    .tapa {
-      background: #fff;
-      transform: rotateY(180deg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      padding: 20px;
-      box-shadow: 0 0 25px #ffb6c1;
+      z-index: 1;
       overflow: hidden;
     }
 
-    .tapa h2 {
-      margin: 0;
-      color: #c71585;
+    .tapa {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #ff1493;
+      transform-origin: top center;
+      transform: rotateX(0deg);
+      transition: transform 1s ease-in-out;
+      z-index: 2;
     }
 
-    .mensaje {
-      margin-top: 20px;
-      font-size: 16px;
+    .contenido {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-sizing: border-box;
+      font-size: 14px;
       color: #800000;
-      display: none;
       text-align: center;
+      transition: top 1s ease-in-out;
+      z-index: 0;
     }
 
     .corazon {
@@ -81,7 +69,7 @@
       height: 20px;
       background: red;
       transform: rotate(45deg);
-      animation: flotar 5s linear infinite;
+      animation: flotar 4s linear infinite;
     }
 
     .corazon::before, .corazon::after {
@@ -115,37 +103,40 @@
         transform: translateX(100px) rotate(45deg);
       }
     }
-
   </style>
 </head>
 <body>
 
-<div class="contenedor">
-  <div class="sobre" onclick="abrirSobre()">
-    <div class="cara">📩</div>
-    <div class="tapa">
-      <h2>💖 Para ti 💖</h2>
-      <div class="mensaje" id="mensaje">
-        Hola querido/a,<br><br>
-        Esta es una carta para recordarte lo increíble que eres.<br>
-        Nunca dejes de sonreír, sigue brillando con tu luz única.<br><br>
-        Con cariño,<br>
-        Tu amigo invisible 💌
-      </div>
+<div class="contenedor" onclick="abrirSobre()">
+  <div class="sobre">
+    <div class="tapa" id="tapa"></div>
+    <div class="contenido" id="contenido">
+      <h3>💖 Para ti 💖</h3>
+      <p>
+        Esta carta es para recordarte<br>
+        lo especial que eres.<br><br>
+        Nunca dejes de brillar ✨<br>
+        Con cariño,<br>Tu amigo invisible 💌
+      </p>
     </div>
   </div>
 </div>
 
 <script>
   function abrirSobre() {
-    const sobre = document.querySelector('.sobre');
-    const mensaje = document.getElementById('mensaje');
-    sobre.classList.add('girar');
+    const tapa = document.getElementById('tapa');
+    const contenido = document.getElementById('contenido');
 
+    // Animar tapa hacia atrás
+    tapa.style.transform = 'rotateX(-120deg)';
+
+    // Subir contenido como carta saliendo
     setTimeout(() => {
-      mensaje.style.display = 'block';
-      lanzarCorazones();
-    }, 2000); // espera a que gire
+      contenido.style.top = '0%';
+    }, 800);
+
+    // Corazones flotantes
+    lanzarCorazones();
   }
 
   function lanzarCorazones() {
@@ -158,7 +149,7 @@
       document.body.appendChild(corazon);
       setTimeout(() => {
         corazon.remove();
-      }, 5000);
+      }, 4000);
     }
   }
 </script>
