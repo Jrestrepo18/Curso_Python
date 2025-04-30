@@ -105,4 +105,47 @@
       100% {
         bottom: 100vh;
         opacity: 0;
-        transform: translate
+        transform: translateX(100px) rotate(45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="contenedor">
+  <div class="carta" onclick="abrirCarta()">
+    <div class="frente">📩</div>
+    <div class="atras">
+      <h2>💖 Para ti 💖</h2>
+      <p>Hola querido/a,<br><br>
+      Esta es una carta para recordarte lo valioso/a que eres.<br>
+      Nunca dejes de sonreír, sigue brillando con tu luz única.<br><br>
+      Con cariño,<br>Tu amigo invisible 💌</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function abrirCarta() {
+    const carta = document.querySelector('.carta');
+    carta.classList.add('volteada');
+    lanzarCorazones();
+  }
+
+  function lanzarCorazones() {
+    for (let i = 0; i < 20; i++) {
+      const corazon = document.createElement('div');
+      corazon.className = 'corazon';
+      corazon.style.left = Math.random() * window.innerWidth + 'px';
+      corazon.style.bottom = '0px';
+      corazon.style.animationDelay = Math.random() * 4 + 's';
+      document.body.appendChild(corazon);
+      setTimeout(() => {
+        corazon.remove();
+      }, 4000);
+    }
+  }
+</script>
+
+</body>
+</html>
