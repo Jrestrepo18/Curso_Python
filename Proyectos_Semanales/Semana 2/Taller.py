@@ -8,6 +8,7 @@
 #60 a 69: Aprobado
 #0 a 59: Reprobado
 
+# Definición de códigos de color para mostrar mensajes en diferentes colores
 RESET = '\033[0m'  
 GREEN = '\033[32m'  
 YELLOW = '\033[33m'  
@@ -17,7 +18,7 @@ MAGENTA = '\033[35m'
 
 
 calificacion = float(input("\nIngrese la calificación del estudiante: "))
-
+# Clasifica la calificación ingresada según el rango
 if calificacion <= 59:
     print(f"{RED}Reprobado{RESET}")
 elif calificacion >= 60 and calificacion <= 69:
@@ -32,8 +33,9 @@ else:
 # 2. Calcular el promedio:
 # Permitir al usuario ingresar una lista de calificaciones (separadas por comas)
 # Calcular y mostrar el promedio de las calificaciones en la lista.
-notas_planas=[]
 
+# Pide una lista de calificaciones, las convierte a números y calcula el promedio
+notas_planas=[]
 calificaciones = input("\nIngrese las calificaciones separadas por comas: ")
 calificaciones = calificaciones.split(",")
 
@@ -47,6 +49,7 @@ print(f"El promedio es: {promedio:.2f}")
 # Preguntar al usuario por un valor específico
 # Contar cuántas calificaciones en la lista son mayores que este valor
 
+# Pide un valor y cuenta cuántas calificaciones son mayores que ese valor
 valor = float(input("\nIngrese una nota (0 - 100) para comparar: "))
 
 contador = 0
@@ -60,7 +63,7 @@ print(f"Hay {contador} calificaciones mayores que {valor}.")
 # Preguntar al usuario por una calificación específica. 
 # Verificar si esta calificación está en la lista y contar cuántas veces aparece, utilizando break y continue para controlar el flujo del programa.
 
-
+# Verifica si una calificación específica aparece en la lista y cuántas veces
 verificar=float(input("\nIngrese una calificacion: "))
 c = 0
 
@@ -70,6 +73,7 @@ for i in notas_planas:
 
     c += 1
 
+# Muestra si la calificación existe o no, con color si no aparece
 if contador > 0:
     print(f"la calificacion {verificar} aparece en el contador {c} veces")
 else:
