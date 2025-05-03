@@ -6,7 +6,7 @@ print("\n-------------------- Bienvenido al Sistema de Gestión y Costeo de Equi
 nombre_usurio = input("Ingrese su nombre: ")
 tipo_viaje = int(input("\nTipo de viaje 1) nacional / 2) internacional: "))
 if tipo_viaje == 1:
-    costo_base= 240000
+    costo_base= 230000
     print("\nCosto del viaje 230.000.")
 elif tipo_viaje == 2:
     costo_base= 4200000
