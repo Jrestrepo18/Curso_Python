@@ -4,43 +4,62 @@ contador_id = 1
 while True:
     print("\n-------------------- Bienvenido al Sistema de Gestión y Costeo de Equipaje Aéreo ✈️--------------------")
     print("\nIngrese su informacion para el viaje.")
-    nombre_usurio = input("\nIngrese su nombre: ")
-    tipo_viaje = int(input("\nTipo de viaje 1) nacional / 2) internacional: "))
-    if tipo_viaje == 1:
-        costo_base= 230000
-        print("-"*25)
-        destino = "Bogota - Medellin"
-        print("\nBogota - Medellin")
-        print("Costo del viaje 230.000.")
-        print("-"*25)
-        
-    elif tipo_viaje == 2:
-        costo_base= 4200000
-        print("-"*25)
-        destino = "Bogota - España"
-        print("\nBogota - España")
-        print("\nCosto del viaje 4.200.000.")
-        print("-"*25)
-    else:
-        print("\nViaje no disponible.")
-
-    equipaje_principal = float(input("\nPeso de su equipaje Principal: "))
-    if equipaje_principal <= 20:
-        print("\nValor a pagar es de $50.000")
-        costo_equipaje = 50000
-        estado_equipaje = "Equipaje permitido"
-    elif equipaje_principal <= 30:
-        print("\nValor a pagar es de $70.000")
-        costo_equipaje = 70000
-        estado_equipaje = "Equipaje permitido"
-    elif equipaje_principal < 49:
-        print("\nValor a pagar es de $110.000")
-        costo_equipaje =110000
-        estado_equipaje = "Equipaje permitido"
-    else:
-        print("\nNo admitido, debe cancelar o viajar sin equipaje.")
-        costo_equipaje = 0
-        estado_equipaje = "Equipaje no permitido"
+    while True:
+        nombre_usurio = input("\nIngrese su nombre: ")
+        if nombre_usurio.replace(" ", "").isalpha():
+            break
+        else:
+            print("El nombre no puede contener números ni caracteres especiales.")
+    
+   
+    while True:
+        print("\nSeleccione el destino de su viaje:")
+        tipo_viaje = int(input("\nTipo de viaje 1) nacional / 2) internacional: "))
+    
+        if tipo_viaje == 1:
+            costo_base= 230000
+            print("-"*25)
+            destino = "Bogota - Medellin"
+            print("\nBogota - Medellin")
+            print("Costo del viaje 230.000.")
+            print("-"*25)
+            break
+            
+        elif tipo_viaje == 2:
+            costo_base= 4200000
+            print("-"*25)
+            destino = "Bogota - España"
+            print("\nBogota - España")
+            print("\nCosto del viaje 4.200.000.")
+            print("-"*25)
+            break
+        else:
+            print("\nOpcion no valida, por favor seleccione 1 o 2.")
+            
+    while True:
+        try:
+            equipaje_principal = float(input("\nPeso de su equipaje Principal: "))
+            if equipaje_principal <= 20:
+                print("\nValor a pagar es de $50.000")
+                costo_equipaje = 50000
+                estado_equipaje = "Equipaje permitido"
+            elif equipaje_principal <= 30:
+                print("\nValor a pagar es de $70.000")
+                costo_equipaje = 70000
+                estado_equipaje = "Equipaje permitido"
+            elif equipaje_principal < 49:
+                print("\nValor a pagar es de $110.000")
+                costo_equipaje =110000
+                estado_equipaje = "Equipaje permitido"
+            else:
+                print("\nNo admitido, debe cancelar o viajar sin equipaje.")
+                costo_equipaje = 0
+                estado_equipaje = "Equipaje no permitido"
+                break
+        except ValueError:
+            print("El peso del equipaje debe ser un número válido.")
+          
+      
 
     equipaje_mano = input("\n¿Lleva equipaje de mano S(si) - N(no)").lower()
     if equipaje_mano == "s":
