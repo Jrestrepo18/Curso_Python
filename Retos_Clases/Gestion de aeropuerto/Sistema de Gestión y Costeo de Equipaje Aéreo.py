@@ -35,7 +35,7 @@ while True:
             break
         else:
             print("\nOpcion no valida, por favor seleccione 1 o 2.")
-            
+
     while True:
         try:
             equipaje_principal = float(input("\nPeso de su equipaje Principal: "))
@@ -43,14 +43,17 @@ while True:
                 print("\nValor a pagar es de $50.000")
                 costo_equipaje = 50000
                 estado_equipaje = "Equipaje permitido"
+                break
             elif equipaje_principal <= 30:
                 print("\nValor a pagar es de $70.000")
                 costo_equipaje = 70000
                 estado_equipaje = "Equipaje permitido"
+                break
             elif equipaje_principal < 49:
                 print("\nValor a pagar es de $110.000")
                 costo_equipaje =110000
                 estado_equipaje = "Equipaje permitido"
+                break
             else:
                 print("\nNo admitido, debe cancelar o viajar sin equipaje.")
                 costo_equipaje = 0
