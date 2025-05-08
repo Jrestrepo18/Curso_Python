@@ -3,7 +3,6 @@ products = {}
 def main(funcion):
     while True:
         funcion()
-
         while True:
             exit_menu = input("\n\033[32m¿Desea continuar o regrear al menu? S(si) - N(no):\033[0m ").lower()
             if exit_menu == "s":
@@ -15,7 +14,6 @@ def main(funcion):
 
 def add_product():
     print("\n\033[33mIngrese productos al inventario\n\033[0m")
-
     while True:
         try:
             name_product = str(input("Ingrese nombre del producto: "))
@@ -25,14 +23,13 @@ def add_product():
                 break
         except ValueError:
             print("\033[31mValor invalido.\033[0m")
-    
     while True:
             try:  
                 price_product = float(input("Ingrese el precio del producto: "))
                 if  price_product < 0:
                     print("\033[\n31m---------- Valor invalido. ----------\033[0m\n")
                 else:
-                        break
+                    break
             except ValueError:
                 print("\033[\n31m---------- Valor invalido. ----------\033[0m\n")
     while True:
@@ -41,7 +38,7 @@ def add_product():
             if amount_product < 0:
                 print("\n\033[31m---------- Valor no valido. ----------\033[0m\n")
             else:
-                    break
+                break
         except ValueError:
             print("\n\033[31m---------- Valor invalido. ----------\033[0m\n")
 
@@ -51,7 +48,7 @@ def add_product():
     }
 
     print("="*30)
-    print(f"\033[32mEL producto fue agragado con exito:\033[0m \nNombre del producto: {name_product} \nCantidad del producto: {amount_product} \nValor del producto: {price_product}")
+    print(f"\033[32mEL producto fue agragado con exito:\033[0m \nNombre del producto: {name_product} \nCantidad del producto: {amount_product} \nValor del producto: {price_product:,.2f}")
     print("="*30)
 
 def consult_products():
@@ -59,10 +56,15 @@ def consult_products():
         print("\n\033[31m---------- Producto no existente en el inventario. -----------\n\033[0m")
     else:
         print("\n\033[33m----------------------------- INVENTARIO. -----------------------------\033[0m\n")
-        print(f"{'NOMBRE':<20} {'CANTIDAD':<20} {'PRECIO':<30}")
+        print(f"{'NOMBRE':<20} {'CANTIDAD':<10} {'PRECIO UNITARIO':<20} {'VALOR TOTAL':<20}")
         print("-" * 70)
         for name_product, datos in products.items():
-            print(f"{name_product:<20} {datos['amount']:<20} {datos['price']:<30}")
+            cantidad = datos['amount']
+            precio = datos['price']
+            total_value = cantidad * precio
+            price_formatted = "${:,.2f}".format(precio)
+            total_formatted = "${:,.2f}".format(total_value)
+            print(f"{name_product:<20} {cantidad:<10} {price_formatted:<20} {total_formatted:<20}")
         print("-" * 70)
 
 def update_products():
@@ -71,22 +73,27 @@ def update_products():
         update_products = input("\nIngrese nombre del producto que desea actulizar: ")
         if update_products not in products:
             print("\n\033[31m---------- Producto no registrado. ----------\033[0m\n")
-            #input("Presione ENTER para ingresar un valor valido")
         else:
             new_price = input("Ingrese nuevo precio: ")
             products[update_products]["price"] = new_price
-            print(f"\n\033[32Precio actulizado:\033[0m \nNombre del producto: {update_products} \nPrecio actulizado: {new_price}")
+            print(f"\n\033[32Precio actulizado:\033[0m \nNombre del producto: {update_products} \nPrecio actulizado: {new_price:,.2f}")
             break
-        
+
 def delete_products():
     print("\n\033[33m---------- Eliminar prducto. -----------\033[0m\n")
     while True:
         delete_products = input("Ingrese el nombre del producto que sea eliminar: ")
         if delete_products not in products:
-
             print("\n\033[31m---------- Producto no registrado. ----------\033[0m\n")
         elif delete_products in products:
             del products[delete_products]
             print(f"\n{delete_products} a sido eliminado con exito. ")
             break
     
+def inventory():
+    print("\n\033[33m---------- VAlor total del inventario. -----------\033[0m\n")
+    total_inventory = lambda i: i ["amount"] * i["price"]
+    calculate_total_inventory = sum(total_inventory(i) for i in products.values())
+    formatted_total = "${:,.2f}".format(calculate_total_inventory)
+    print(f"Total inventatio: {formatted_total}")
+

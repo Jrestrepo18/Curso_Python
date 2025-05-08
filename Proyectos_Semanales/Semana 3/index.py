@@ -21,11 +21,15 @@ while True:
     if op == 1:
         main(add_product)
     elif op == 2:
-        main(consult_products)
+        consult_products()
+        input("Precione ENTER para volver a l menu ")
     elif op == 3:
         main(update_products)
     elif op == 4:
         main(delete_products)
+    elif op == 5:
+        inventory()
+        input("Precione ENTER para volver a l menu ")
     elif op == 6:
         print("Has salido del sistema de inventarios... ¡Hasta Luego!")
         break
