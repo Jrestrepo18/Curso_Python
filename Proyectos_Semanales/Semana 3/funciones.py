@@ -81,12 +81,12 @@ def update_products():
 def delete_products():
     print("\n\033[33m---------- Eliminar prducto. -----------\033[0m\n")
     while True:
-        delete_products = input("Ingrese el nombre del procto que sea eliminar: ")
+        delete_products = input("Ingrese el nombre del producto que sea eliminar: ")
         if delete_products not in products:
-            
+
             print("\n\033[31m---------- Producto no registrado. ----------\033[0m\n")
         elif delete_products in products:
             del products[delete_products]
             print(f"\n{delete_products} a sido eliminado con exito. ")
-        
+            break
     

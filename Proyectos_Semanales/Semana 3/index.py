@@ -42,7 +42,7 @@ while True:
     elif op == 4:
         main(delete_products)
     elif op == 6:
-        print("Has salido del sistema de inventarios.")
+        print("Has salido del sistema de inventarios... ¡Hasta Luego!")
         break
     else:
         print("\nOpcion no valida.")
