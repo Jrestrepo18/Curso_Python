@@ -1,4 +1,3 @@
-
 students = {
     1010 :{
         "full_name" : "Roberto",
@@ -48,7 +47,15 @@ def aggregate_student():
         print("\n\033[93m El ID ya se encuentra registado. \033[0m\n")
     else:
         full_name = input("Ingrese el nombre del estudiane: ")
-        age = int(input("Ingrese la edad del estudiante: "))
+        while True:
+            age = input("Ingrese la edad del estudiante: ")
+            if age.isdigit():
+                age = int(age)
+                break
+            else:
+                print("El número no puede tener letras ni caracteres especiales.")
+
+            
         note = float(input("Ingrese la nota del estudiante: "))
     
         students[id_student] = {
@@ -114,6 +121,7 @@ def low_redundancy():
         if student["note"] < 3.0:
         
             print(f"{student['full_name']} va perdiento con: {student['note']}")
+
 
 
 

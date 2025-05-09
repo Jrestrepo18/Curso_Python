@@ -101,7 +101,7 @@ def menu():
     print("5. Informe general de estudiantes.")
 
     while True:
-        op = int(input("Ingrese una OPCION: "))
+        op = int(input("\nIngrese una OPCION: "))
 
         if op == 1:
             op_1()

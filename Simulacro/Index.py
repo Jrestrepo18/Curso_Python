@@ -10,8 +10,16 @@ while True:
     6) Listar estudiantes bajo rendimiento.
     7) Salir del sistema.
     """)
+    while True:
+        try:
+            opcion = int(input("Ingrese una OPCION: "))
+            if opcion < 1 or opcion > 7:
+                print("\n\033[93mIngrese una OPCION valida (1 - 7)\n\033[0m")
+                continue
+            break
+        except ValueError:
+            print("\n\033[93mValor invaido.\n\033[0m")
 
-    opcion = int(input("Ingrese una OPCION: "))
 
     match opcion:
         case 1:
