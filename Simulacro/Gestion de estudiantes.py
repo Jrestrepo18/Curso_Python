@@ -40,9 +40,7 @@ def op_2():
     id_search = input("Ingrese el ID del estudiante que desea buscar: ")
     if id_search not in students:
         print("Estudiante no existente.")
-
     elif id_search in students:
-
         print(f"ID: {id_search}")
         print(f"Nombre del estudiante: {students[id_search]['name_student']}")
         print(f"Edad: {students[id_search]['age_student']}")
